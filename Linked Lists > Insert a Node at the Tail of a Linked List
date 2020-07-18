@@ -1,0 +1,38 @@
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data) {
+
+  SinglyLinkedListNode* newnode = NULL ;
+  SinglyLinkedListNode* i = NULL ;
+  //SinglyLinkedListNode* a = NULL ;
+
+  newnode = (SinglyLinkedListNode*)calloc(1, sizeof(SinglyLinkedListNode));
+  //i = (SinglyLinkedListNode*)calloc(1, sizeof(SinglyLinkedListNode));
+  newnode->data = data ;
+
+  if(head == NULL)
+  {
+    head = newnode ;
+  }  
+  else
+  {
+    i = head ;
+    while(i->next!=NULL)
+    {
+      i = i->next ;
+    }
+    i->next = newnode ;
+    i = newnode ;
+  }
+  return head ;
+
+}
+
+int main()
