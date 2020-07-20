@@ -1,0 +1,60 @@
+#include <assert.h>
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Complete the compare_lists function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+
+  int n = 0 ;
+  int m = 0 ;
+  int result = 0 ;
+  SinglyLinkedListNode* i = NULL ;
+  SinglyLinkedListNode* j = NULL ;
+
+  for(i=head1 ; i!=NULL ; i=i->next)
+  {
+    ++n ;
+  }
+  for(i=head2 ; i!=NULL ; i=i->next)
+  {
+    ++m ;
+  }
+
+  if(n==m)
+  {
+    for(i=head1, j=head2 ; i!=NULL ; i=i->next, j=j->next)
+    {
+      if(i->data == j->data)
+      {
+        result = 1 ;
+      }
+      else
+      {
+        result = 0 ;
+      }
+
+    } 
+  }
+  else
+  {
+    result = 0 ; //not equal
+  }
+
+  return result ;
+}
+
+int main()
