@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_HEIGHT 41
+
+struct box
+{
+	/**
+	* Define three fields of type int: length, width and height
+	*/
+    int length  ;
+    int width ;
+    int height ;
+};
+
+typedef struct box box;
+
+int get_volume(box b) {
+	/**
+	* Return the volume of the box
+	*/
+    int volume = 0 ;
+    volume = b.height * b.length * b.width ;
+    return volume ;
+}
+
+int is_lower_than_max_height(box b) {
+	/**
+	* Return 1 if the box's height is lower than MAX_HEIGHT and 0 otherwise
+	*/
+    int i = 0 ;
+    if(b.height < MAX_HEIGHT)
+    {
+        i = 1 ;
+    }
+    else
+    {
+        i = 0 ;
+    }
+    return i ;
+}
+
+int main()
