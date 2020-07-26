@@ -1,0 +1,42 @@
+
+/* you only have to complete the function given below.  
+node is defined as  
+
+struct node {
+    
+    int data;
+    struct node *left;
+    struct node *right;
+  
+};
+
+*/
+void levelOrder( struct node *root) {
+
+  struct node **queue[500] = {0} ;
+  struct node *temp = root ;
+  int start = 0 ;
+  int end = 0 ;
+
+  while(temp != NULL)
+  {
+    printf("%d ", temp->data) ;
+
+    if(temp->left != NULL)
+    {
+      queue[end] = temp->left ;
+      ++end ;
+    }
+
+    if(temp->right != NULL)
+    {
+      queue[end] = temp->right ;
+      ++end ;
+    }
+
+    temp = queue[start] ;
+    ++start ;
+  }
+
+}
+
