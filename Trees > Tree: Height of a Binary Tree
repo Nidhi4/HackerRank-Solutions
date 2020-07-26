@@ -1,0 +1,43 @@
+/* you only have to complete the function given below.  
+node is defined as  
+
+struct node {
+    
+    int data;
+    struct node *left;
+    struct node *right;
+  
+};
+
+*/
+int getHeight(struct node* root) {
+    // Write your code here
+  int r = 0 ;
+  int l = 0 ;
+  int height = 0 ;
+
+  if(root == NULL)
+  {
+    height = -1 ;
+  }
+  else
+  {
+    r = getHeight(root->right) ;
+    ++r ;
+
+    l = getHeight(root->left) ;
+    ++l ;
+
+    if(r>l)
+    {
+      height = r ;
+    }
+    else
+    {
+      height = l ;
+    }
+
+  }
+  return height ;
+}
+
