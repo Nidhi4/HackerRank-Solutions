@@ -1,0 +1,39 @@
+// Complete the has_cycle function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+bool has_cycle(SinglyLinkedListNode* head) {
+
+    SinglyLinkedListNode* slow_p = head ;
+    SinglyLinkedListNode* fast_p = head ;
+    bool result = false ;
+    
+    if(head==NULL || head->next==NULL)
+    {
+        result = false ;
+    }
+    while(slow_p!=NULL && fast_p!=NULL && fast_p->next!=NULL)
+    {
+        slow_p = slow_p->next ;
+        fast_p = fast_p->next->next ;
+        if(slow_p == fast_p)
+        {
+            result = true ;
+            fast_p = NULL ;
+        }
+        else {
+            result = false ;
+        }
+    }
+
+    return result ;
+}
+
+int main()
