@@ -1,0 +1,31 @@
+/* you only have to complete the function given below.  
+node is defined as  
+
+struct node {
+    
+    int data;
+    struct node *left;
+    struct node *right;
+  
+};
+
+*/
+struct node *lca( struct node *root, int v1, int v2 ) {
+
+    struct node *temp = root ;
+
+    if(v1 < temp->data && v2 < temp->data)
+    {
+        temp = lca(temp->left, v1, v2) ;
+    }
+    else if(v1 > temp->data && v2 > temp->data)
+    {
+        temp = lca(temp->right, v1, v2) ;
+    }
+    else {
+        temp = root ;
+    }
+
+    return temp ;
+}
+
