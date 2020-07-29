@@ -1,0 +1,56 @@
+// Complete the sortedInsert function below.
+
+/*
+ * For your reference:
+ *
+ * DoublyLinkedListNode {
+ *     int data;
+ *     DoublyLinkedListNode* next;
+ *     DoublyLinkedListNode* prev;
+ * };
+ *
+ */
+DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
+
+  DoublyLinkedListNode* n1 = NULL ;
+  DoublyLinkedListNode* n2 = head ;
+  DoublyLinkedListNode* newnode = NULL ;
+
+  newnode = (DoublyLinkedListNode*)calloc(1, sizeof(DoublyLinkedListNode)) ;
+  newnode->data = data ;
+
+  if(head == NULL)
+  {
+    head = newnode ;
+  }
+  else if(head->data >= newnode->data)
+  {
+    newnode->next = head ;
+    head->prev = newnode ;
+    head = newnode ;
+  }
+  else
+  {
+    while(n2 != NULL && n2->data <= newnode->data)
+    {
+      n1 = n2 ;
+      n2 = n2->next ;
+    }
+    if(n2 == NULL)
+    {
+      n1->next = newnode ;
+      newnode->prev = n1 ;
+    }
+    else
+    {
+      n1->next = newnode ;
+      n2->prev = newnode ;
+      newnode->prev = n1 ;
+      newnode->next = n2 ;
+    }
+  }
+  
+  return head ;
+}
+
+int main()
