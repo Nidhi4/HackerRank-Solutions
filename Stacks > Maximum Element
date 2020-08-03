@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+struct stack
+{
+    int data[100000] ;
+    int top ;
+}s ;
+int max = 0 ;
+
+void push ()
+{
+    int item = 0 ;
+    scanf("%d", &item) ;
+    s.top++ ;
+    s.data[s.top] = item ;
+    if(max < s.data[s.top])
+    {
+        max = s.data[s.top] ;
+    }
+}
+void pop ()
+{
+    int i = 0 ;
+    if(max == s.data[s.top])
+    {
+        max = 0 ;
+    }
+    --s.top ;
+
+    for(i=s.top ; i>=0 ; --i)
+    {
+        if(max < s.data[i])
+        {
+            max = s.data[i] ;
+        }
+    }
+}
+
+int main() {
+
+    int t = 0 ;
+    int n = 0 ;
+    int choice = 0 ;
+    s.top = -1 ;
+
+    scanf("%d", &t) ;
+    while(t--)
+    {
+        scanf("%d", &choice) ;
+        switch(choice)
+        {
+            case 1 : 
+                push() ;
+                break ;
+
+            case 2 :
+                pop() ;
+                break ;
+
+            case 3 :
+                printf("%d\n", max) ;
+                break ;
+        }
+    }
+
+    return 0;
+}
